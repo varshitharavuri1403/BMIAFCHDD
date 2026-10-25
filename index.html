@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1830">
+  <title>CardioVision | AI Medical Image Analysis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="#" class="brand">
+      <span class="brand-icon">♥</span>
+      <span>Cardio<span class="accent">Vision</span></span>
+    </a>
+    <span class="nav-label">Biomedical Image Analysis</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">AI-POWERED HEALTH TECHNOLOGY</span>
+      <h1>Understand heart images<br>
+        <span class="gradient-text">with intelligent analysis.</span>
+      </h1>
+      <p>
+        Upload a supported medical image to explore the CardioVision
+        image-analysis workflow and its demonstration results.
+      </p>
+    </section>
+
+    <div class="demo-notice">
+      <span class="notice-icon">ⓘ</span>
+      <div>
+        <strong>Frontend demonstration mode</strong>
+        <p>Results are simulated examples, not actual AI predictions or medical diagnoses.</p>
+      </div>
+    </div>
+
+    <section class="workspace">
+      <div class="panel upload-panel">
+        <div class="section-heading">
+          <div>
+            <span class="step-label">STEP 01</span>
+            <h2>Upload Image</h2>
+          </div>
+          <span class="status-dot">Ready</span>
+        </div>
+
+        <p class="description">
+          Select a medical image from your device to preview it.
+        </p>
+
+        <label for="imageInput" class="upload-area" id="uploadArea">
+          <div id="uploadPlaceholder">
+            <div class="upload-icon">↑</div>
+            <h3>Upload your image</h3>
+            <p>Click here to browse your device</p>
+            <span class="file-hint">JPG, JPEG, PNG, WEBP · Max 10 MB</span>
+          </div>
+          <img id="imagePreview" alt="Selected medical image preview"
+               hidden>
+        </label>
+
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/jpeg,image/png,image/webp"
+          hidden
+        >
+
+        <p id="fileInfo" class="file-info" aria-live="polite">
+          No image selected
+        </p>
+
+        <p id="errorMessage" class="error-message" role="alert"></p>
+
+        <button type="button" id="analyzeBtn" class="primary-btn" disabled>
+          <span>✦</span> Analyze Image
+        </button>
+
+        <button type="button" id="resetBtn" class="secondary-btn">
+          Reset
+        </button>
+
+        <div class="privacy-note">
+          <span>🔒</span>
+          <span>Your image stays in this browser demo and is not uploaded to a server.</span>
+        </div>
+      </div>
+
+      <div class="panel results-panel" id="resultsPanel">
+        <div class="section-heading">
+          <div>
+            <span class="step-label">STEP 02</span>
+            <h2>Analysis Results</h2>
+          </div>
+          <span class="result-badge">Preview</span>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">♡</div>
+          <h3>Your results will appear here</h3>
+          <p>Upload an image and click Analyze Image to preview the results layout.</p>
+          <div class="empty-features">
+            <span>✓ Predicted condition</span>
+            <span>✓ Model score</span>
+            <span>✓ Eight class scores</span>
+          </div>
+        </div>
+
+        <div id="loadingState" class="loading-state" hidden>
+          <div class="spinner"></div>
+          <h3>Processing image...</h3>
+          <p>Running the demonstration workflow.</p>
+        </div>
+
+        <div id="resultContent" hidden>
+          <div class="demo-result-label">
+            DEMONSTRATION RESULT — NOT A REAL PREDICTION
+          </div>
+
+          <div class="prediction-card">
+            <span class="prediction-label">Illustrative predicted condition</span>
+            <h3 id="predictedCondition">Normal / No Abnormality</h3>
+            <div class="score-row">
+              <span>Illustrative model score</span>
+              <strong id="confidenceScore">82%</strong>
+            </div>
+            <div class="progress-track">
+              <div id="confidenceBar" class="progress-fill" style="width:82%"></div>
+            </div>
+          </div>
+
+          <div class="probability-heading">
+            <h3>Condition-wise scores</h3>
+            <span>Example values</span>
+          </div>
+
+          <div id="probabilityList" class="probability-list"></div>
+
+          <p class="medical-note">
+            These values are fixed demonstration data. They are not calculated
+            from your uploaded image and must not be used for medical decisions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="conditions-section">
+      <div class="section-heading">
+        <div>
+          <span class="step-label">PROJECT OVERVIEW</span>
+          <h2>Eight target classes</h2>
+        </div>
+      </div>
+
+      <div class="conditions-grid">
+        <div class="condition-card"><span>01</span><p>Coronary Artery Disease</p></div>
+        <div class="condition-card"><span>02</span><p>Cardiomyopathy</p></div>
+        <div class="condition-card"><span>03</span><p>Heart Failure</p></div>
+        <div class="condition-card"><span>04</span><p>Myocardial Infarction</p></div>
+        <div class="condition-card"><span>05</span><p>Arrhythmia</p></div>
+        <div class="condition-card"><span>06</span><p>Valvular Heart Disease</p></div>
+        <div class="condition-card"><span>07</span><p>Congenital Heart Disease</p></div>
+        <div class="condition-card"><span>08</span><p>Normal / No Abnormality</p></div>
+      </div>
+
+      <p class="disclaimer">
+        CardioVision is a research project prototype. It is not a substitute
+        for professional medical evaluation.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="brand footer-brand">
+      <span class="brand-icon">♥</span>
+      <span>Cardio<span class="accent">Vision</span></span>
+    </a>
+    <p>AI-powered biomedical image analysis · Academic project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
