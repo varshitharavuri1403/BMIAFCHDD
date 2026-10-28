@@ -1,4 +1,6 @@
 flask
 gunicorn
 numpy
+tensorflow
+
 
